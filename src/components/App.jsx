@@ -4,11 +4,12 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Background } from './Container/Background';
 import { Box } from './Container/Box';
 import { ContactList } from './ContcatList/ContactList';
-
+import shortid from 'shortid';
 import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   static LOCAL__KEY = 'contacts';
+  static iputNameId = shortid.generate();
 
   state = {
     contacts: [],

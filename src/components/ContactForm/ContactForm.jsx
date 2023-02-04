@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import shortid from 'shortid';
 import PropTypes from 'prop-types';
 import { Button, EnterName, FildName, Forms } from './ContactFormStyle';
 
@@ -13,8 +12,6 @@ export class ContactForm extends Component {
     number: '',
   };
 
-  iputNameId = shortid.generate();
-  inputNumberId = shortid.generate();
 
   handleChange = e => {
     console.log(e.currentTarget);
@@ -42,7 +39,7 @@ export class ContactForm extends Component {
       return;
     }
 
-    this.props.onSubmit({ name, number }, shortid.generate());
+    this.props.onSubmit({ name, number });
     this.resetForm();
   };
   resetForm = () => {
@@ -56,12 +53,12 @@ export class ContactForm extends Component {
     const { name, number } = this.state;
     return (
       <Forms onSubmit={this.hendleSubmit}>
-        <FildName htmlFor={this.iputNameId}>
+        <FildName htmlFor="name">
           Name
           <EnterName
             value={name}
             onChange={this.handleChange}
-            id={this.iputNameId}
+            id="name"
             type="text"
             name="name"
             placeholder="Enter name"
@@ -70,12 +67,12 @@ export class ContactForm extends Component {
             required
           />
         </FildName>
-        <FildName htmlFor={this.inputNumberId}>
+        <FildName htmlFor="number">
           Number
           <EnterName
             value={number}
             onChange={this.handleChange}
-            id={this.inputNumberId}
+            id="number"
             type="tel"
             name="number"
             placeholder="Enter number"
